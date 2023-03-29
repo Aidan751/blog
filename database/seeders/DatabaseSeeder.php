@@ -38,6 +38,24 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        $author1->profile()->create([
+            'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nis',
+            'facebook' => 'facebook.com',
+            'youtube' => 'youtube.com',
+        ]);
+
+        $author2->profile()->create([
+            'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nis',
+            'facebook' => 'facebook.com',
+            'youtube' => 'youtube.com',
+        ]);
+
+        $author3->profile()->create([
+            'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nis',
+            'facebook' => 'facebook.com',
+            'youtube' => 'youtube.com',
+        ]);
+
 
         $category1 = Category::create([
             'name' => 'News'
@@ -51,12 +69,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Partnership'
         ]);
 
+
         $post1 = $author1->posts()->create([
             'title' => 'We relocated our office to a new designed garage',
             'slug' => 'we-relocated-our-office-to-a-new-designed-garage',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
             'category_id' => $category1->id,
-            'featured' => 'posts/1.jpg',
+            'featured' => 'img/1.jpg',
         ]);
 
         $post2 = $author2->posts()->create([
@@ -64,7 +83,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'top-5-brilliant-content-marketing-strategies',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
             'category_id' => $category2->id,
-            'featured' => 'posts/2.jpg',
+            'featured' => 'img/2.jpg',
         ]);
 
         $post3 = $author3->posts()->create([
@@ -72,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'best-practices-for-minimalist-design-with-example',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
             'category_id' => $category3->id,
-            'featured' => 'posts/3.jpg',
+            'featured' => 'img/3.jpg',
         ]);
 
         $post4 = $author2->posts()->create([
@@ -80,7 +99,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'congratulate-and-thank-to-maryam-for-joining-our-team',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
             'category_id' => $category2->id,
-            'featured' => 'posts/4.jpg',
+            'featured' => 'img/4.jpg',
         ]);
 
         $post5 = $author1->posts()->create([
@@ -88,7 +107,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'new-published-books-to-read-by-a-product-designer',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
             'category_id' => $category1->id,
-            'featured' => 'posts/5.jpg',
+            'featured' => 'img/5.jpg',
         ]);
 
         $tag1 = Tag::create([

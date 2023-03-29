@@ -85,6 +85,19 @@
                         <div class="col-lg-3">
                             <ul class="list-group">
                                 <li class="list-group-item bg-dark text-bg-dark">
+                                    {{ __('Users') }}
+                                </li>
+                                <li class="list-group-item">
+                                    <a class="nav-link" href="{{ route('users.create') }}">
+                                        {{ __('Create User') }}
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a class="nav-link" href="{{ route('users.index') }}">
+                                        {{ __('List Users') }}
+                                    </a>
+                                </li>
+                                <li class="list-group-item bg-dark text-bg-dark">
                                     {{ __('Posts') }}
                                 </li>
                                 <li class="list-group-item">
@@ -131,6 +144,11 @@
                                 <li class="list-group-item">
                                     <a class="nav-link" href="{{ route('posts.trashed') }}">
                                         {{ __('Trashed Posts') }}
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a class="nav-link" href="{{ route('users.trashed') }}">
+                                        {{ __('Trashed Users') }}
                                     </a>
                                 </li>
                             </ul>

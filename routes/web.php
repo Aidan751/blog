@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -35,4 +36,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     Route::resource('categories', CategoryController::class);
+
+    // get trashed users
+    Route::get('users/trashed', [UserController::class, 'trashed'])->name('users.trashed');
+
+    // restore trashed users
+    Route::get('users/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
+
+    // kill trashed users
+    Route::delete('users/kill/{id}', [UserController::class, 'kill'])->name('users.kill');
+
+    // change user permission
+    Route::get('users/admin/{id}', [UserController::class, 'permissions'])->name('users.permissions');
+
+    Route::resource('users', UserController::class);
+
 });
