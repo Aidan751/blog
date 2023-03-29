@@ -16,6 +16,7 @@ class SettingsTableSeeder extends Seeder
     {
         Setting::create([
             'site_name' => 'Laravel Blog',
+            'about_us' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nis',
             'address' => '123 Main St',
             'contact_number' => '555-555-5555',
             'contact_email' => 'test@gmail.com'

@@ -1,624 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{ $settings->site_name }}</title>
 
-    <title>TheSaaS — Blog with classic layout</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/crumina-fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/grid.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/page.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="{{ asset('img/apple-touch-icon.png') }}">
-    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+    <!--Plugins styles-->
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/swiper.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/primary-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.css"
+        integrity="sha512-CB+XYxRC7cXZqO/8cP3V+ve2+6g6ynOnvJD6p4E4y3+wwkScH9qEOla+BTHzcwB4xKgvWn816Iv0io5l3rAOBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Styles for RTL-->
+
+    <!--<link rel="stylesheet" type="text/css" href="app/css/rtl.css">-->
+
+    <!--External fonts-->
+
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <style>
+        .padded-50 {
+            padding: 40px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+
 </head>
 
-<body>
 
+<body class=" ">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
+    <div class="content-wrapper">
+
+        @include('includes.header')
+
+        <div class="header-spacer"></div>
+
         <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <article class="hentry post post-standard has-post-thumbnail sticky">
 
-            <div class="navbar-left">
-                <button class="navbar-toggler" type="button">&#9776;</button>
-                <a class="navbar-brand" href="../index.html">
-                    <img class="logo-dark" src="../assets/img/logo-dark.png" alt="logo">
-                    <img class="logo-light" src="../assets/img/logo-light.png" alt="logo">
-                </a>
+                        <div class="post-thumb">
+                            <img src="{{ asset($top_post->featured) }}" alt="seo">
+                            <div class="overlay"></div>
+                            <a href="{{ $top_post->featured }}" class="link-image js-zoom-image">
+                                <i class="seoicon-zoom"></i>
+                            </a>
+                            <a href="#" class="link-post">
+                                <i class="seoicon-link-bold"></i>
+                            </a>
+                        </div>
+
+                        <div class="post__content">
+
+                            <div class="post__content-info">
+
+                                <h2 class="post__title entry-title ">
+                                    <a href="15_blog_details.html">{{ $top_post->title }}</a>
+                                </h2>
+
+                                <div class="post-additional-info">
+
+                                    <span class="post__date">
+
+                                        <i class="seoicon-clock"></i>
+
+                                        <time class="published">
+                                            {{ $top_post->created_at->diffForHumans() }}
+                                        </time>
+
+                                    </span>
+
+                                    <span class="category">
+                                        <i class="seoicon-tags"></i>
+                                        @foreach ($top_post->tags as $tag)
+                                            <a href="#">#{{ $tag->tag }}</a>&nbsp;
+                                        @endforeach
+                                    </span>
+
+                                    <span class="post__comments">
+                                        <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                        6
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </article>
+                </div>
+                <div class="col-lg-2"></div>
             </div>
-
-            <section class="navbar-mobile">
-                <span class="navbar-divider d-mobile-none"></span>
-
-                <ul class="nav nav-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Demos <span class="arrow"></span></a>
-                        <ul class="nav">
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">SaaS <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../demo/saas-1.html">SaaS 1</a>
-                                    <a class="nav-link" href="../demo/saas-2.html">SaaS 2</a>
-                                    <a class="nav-link" href="../demo/saas-3.html">SaaS 3</a>
-                                    <a class="nav-link" href="../demo/saas-4.html">SaaS 4</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Software <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../demo/software-1.html">Software 1</a>
-                                    <a class="nav-link" href="../demo/software-2.html">Software 2</a>
-                                    <a class="nav-link" href="../demo/software-3.html">Software 3</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Marketing <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../demo/marketing-1.html">Marketing 1</a>
-                                    <a class="nav-link" href="../demo/marketing-2.html">Marketing 2</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Listing <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../demo/listing-1.html">Listing 1</a>
-                                    <a class="nav-link" href="../demo/listing-2.html">Listing 2</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="../demo/finance-1.html">Finance</a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pages <span class="arrow"></span></a>
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../page/how-it-works.html">How it works</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="../page/pricing.html">Pricing</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Portfolio <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/portfolio.html">Potfolio listing</a>
-                                    <a class="nav-link" href="../page/portfolio-single.html">Potfolio single</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Careers <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/career.html">Careers listing</a>
-                                    <a class="nav-link" href="../page/career-single.html">Careers single</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Service <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/service-1.html">Service 1</a>
-                                    <a class="nav-link" href="../page/service-2.html">Service 2</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/about-1.html">About 1</a>
-                                    <a class="nav-link" href="../page/about-2.html">About 2</a>
-                                    <a class="nav-link" href="../page/about-3.html">About 3</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/contact-1.html">Contact 1</a>
-                                    <a class="nav-link" href="../page/contact-2.html">Contact 2</a>
-                                    <a class="nav-link" href="../page/contact-3.html">Contact 3</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-divider"></li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Extra <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/demo.html">Request demo</a>
-                                    <a class="nav-link" href="../page/coming-soon.html">Coming soon</a>
-                                    <a class="nav-link" href="../page/terms.html">Terms</a>
-                                    <a class="nav-link" href="../page/error-404.html">Error 404</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">User <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../page/user-login.html">Login</a>
-                                    <a class="nav-link" href="../page/user-register.html">Register</a>
-                                    <a class="nav-link" href="../page/user-recover.html">Recover</a>
-                                </nav>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Docs <span class="arrow"></span></a>
-                                <nav class="nav">
-                                    <a class="nav-link" href="../docs/index.html">Support center</a>
-                                    <a class="nav-link" href="../docs/articles.html">Articles</a>
-                                    <a class="nav-link" href="../docs/faq.html">FAQ</a>
-                                </nav>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Blog <span class="arrow"></span></a>
-                        <nav class="nav">
-                            <a class="nav-link active" href="../blog/classic.html">Classic</a>
-                            <a class="nav-link" href="../blog/grid.html">Grid</a>
-                            <a class="nav-link" href="../blog/list.html">List</a>
-                            <a class="nav-link" href="../blog/sidebar.html">Sidebar</a>
-                            <div class="nav-divider"></div>
-                            <a class="nav-link" href="../blog/post-1.html">Post 1</a>
-                            <a class="nav-link" href="../blog/post-2.html">Post 2</a>
-                        </nav>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Shop <span class="arrow"></span></a>
-                        <nav class="nav">
-                            <a class="nav-link" href="../shop/list.html">List</a>
-                            <a class="nav-link" href="../shop/item.html">Item</a>
-                            <a class="nav-link" href="../shop/cart.html">Cart</a>
-                            <a class="nav-link" href="../shop/checkout.html">Checkout</a>
-                        </nav>
-                    </li>
-
-                    <li class="nav-item nav-mega">
-                        <a class="nav-link" href="#">Blocks <span class="arrow"></span></a>
-                        <nav class="nav px-lg-2 py-lg-4">
-                            <div class="container-fluid">
-                                <div class="row">
-
-                                    <div class="col-lg">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../block/blog.html">Blog</a>
-                                            <a class="nav-link" href="../block/career.html">Career</a>
-                                            <a class="nav-link" href="../block/contact.html">Contact</a>
-                                            <a class="nav-link" href="../block/content.html">Content</a>
-                                            <a class="nav-link" href="../block/counter.html">Counter</a>
-                                            <a class="nav-link" href="../block/cover.html">Cover</a>
-                                            <a class="nav-link" href="../block/cta.html">Call to action</a>
-                                            <a class="nav-link" href="../block/download.html">Download</a>
-                                            <a class="nav-link" href="../block/explore.html">Explore</a>
-                                            <a class="nav-link" href="../block/faq.html">FAQ</a>
-                                        </nav>
-                                    </div>
-
-                                    <div class="col-lg">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../block/feature-text.html">Feature textual</a>
-                                            <a class="nav-link" href="../block/feature.html">Feature</a>
-                                            <a class="nav-link" href="../block/footer.html">Footer</a>
-                                            <a class="nav-link" href="../block/gallery.html">Gallery</a>
-                                            <a class="nav-link" href="../block/header.html">Header</a>
-                                            <a class="nav-link" href="../block/map.html">Map</a>
-                                            <a class="nav-link" href="../block/modal.html">Modal</a>
-                                            <a class="nav-link" href="../block/offcanvas.html">Offcanvas</a>
-                                            <a class="nav-link" href="../block/partner.html">Partner</a>
-                                            <a class="nav-link" href="../block/popup.html">Popup</a>
-                                        </nav>
-                                    </div>
-
-                                    <div class="col-lg">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../block/portfolio.html">Portfolio</a>
-                                            <a class="nav-link" href="../block/pricing.html">Pricing</a>
-                                            <a class="nav-link" href="../block/process.html">Process</a>
-                                            <a class="nav-link" href="../block/service.html">Service</a>
-                                            <a class="nav-link" href="../block/shop.html">Shop</a>
-                                            <a class="nav-link" href="../block/signup.html">Signup</a>
-                                            <a class="nav-link" href="../block/subscribe.html">Subscribe</a>
-                                            <a class="nav-link" href="../block/team.html">Team</a>
-                                            <a class="nav-link" href="../block/testimonial.html">Testimonial</a>
-                                            <a class="nav-link" href="../block/video.html">Video</a>
-                                        </nav>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </nav>
-                    </li>
-
-                    <li class="nav-item nav-mega">
-                        <a class="nav-link" href="#">UI Kit <span class="arrow"></span></a>
-                        <nav class="nav px-lg-2 py-lg-4">
-                            <div class="container-fluid">
-                                <div class="row">
-
-                                    <div class="col-lg-3">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../uikit/accordion.html">Accordion</a>
-                                            <a class="nav-link" href="../uikit/alert.html">Alert</a>
-                                            <a class="nav-link" href="../uikit/badge.html">Badge</a>
-                                            <a class="nav-link" href="../uikit/button.html">Button</a>
-                                            <a class="nav-link" href="../uikit/card.html">Card</a>
-                                            <a class="nav-link" href="../uikit/color.html">Colors</a>
-                                            <a class="nav-link" href="../uikit/constellation.html">Constellation</a>
-                                            <a class="nav-link" href="../uikit/content.html">Content</a>
-                                            <a class="nav-link" href="../uikit/countdown.html">Count down</a>
-                                            <a class="nav-link" href="../uikit/countup.html">Count up</a>
-                                        </nav>
-                                    </div>
-
-                                    <div class="col-lg-3">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../uikit/dropdown.html">Dropdown</a>
-                                            <a class="nav-link" href="../uikit/form.html">Form</a>
-                                            <a class="nav-link" href="../uikit/gallery.html">Gallery</a>
-                                            <a class="nav-link" href="../uikit/granim.html">Granim</a>
-                                            <a class="nav-link" href="../uikit/icon.html">Icon</a>
-                                            <a class="nav-link" href="../uikit/image.html">Image</a>
-                                            <a class="nav-link" href="../uikit/lightbox.html">Lightbox</a>
-                                            <a class="nav-link" href="../uikit/map.html">Map</a>
-                                            <a class="nav-link" href="../uikit/misc.html">Miscellaneous</a>
-                                            <a class="nav-link" href="../uikit/modal.html">Modal</a>
-                                        </nav>
-                                    </div>
-
-                                    <div class="col-lg-3">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../uikit/nav.html">Nav</a>
-                                            <a class="nav-link" href="../uikit/navbar.html">Navbar</a>
-                                            <a class="nav-link" href="../uikit/offcanvas.html">Offcanvas</a>
-                                            <a class="nav-link" href="../uikit/overlay.html">Overlay</a>
-                                            <a class="nav-link" href="../uikit/popup.html">Popup</a>
-                                            <a class="nav-link" href="../uikit/pricing.html">Pricing</a>
-                                            <a class="nav-link" href="../uikit/process.html">Process</a>
-                                            <a class="nav-link" href="../uikit/progress.html">Progress</a>
-                                            <a class="nav-link" href="../uikit/scroll.html">Scroll</a>
-                                            <a class="nav-link" href="../uikit/section.html">Section</a>
-                                        </nav>
-                                    </div>
-
-                                    <div class="col-lg-3">
-                                        <nav class="nav flex-column">
-                                            <a class="nav-link" href="../uikit/shuffle.html">Shuffle</a>
-                                            <a class="nav-link" href="../uikit/slider.html">Slider</a>
-                                            <a class="nav-link" href="../uikit/social.html">Social</a>
-                                            <a class="nav-link" href="../uikit/tab.html">Tab</a>
-                                            <a class="nav-link" href="../uikit/table.html">Table</a>
-                                            <a class="nav-link" href="../uikit/topbar.html">Topbar</a>
-                                            <a class="nav-link" href="../uikit/typing.html">Typing</a>
-                                            <a class="nav-link" href="../uikit/typography.html">Typography</a>
-                                            <a class="nav-link" href="../uikit/utility.html">Utility</a>
-                                            <a class="nav-link" href="../uikit/video.html">Video</a>
-                                        </nav>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </nav>
-                    </li>
-
-                </ul>
-            </section>
-
-            <a class="btn btn-xs btn-round btn-success"
-                href="https://themeforest.net/item/thesaas-responsive-bootstrap-saas-software-webapp-template/19778599?license=regular&open_purchase_for_item_id=19778599&purchasable=source&ref=thethemeio">Buy
-                Now</a>
-
-        </div>
-    </nav><!-- /.navbar -->
-
-
-    <!-- Header -->
-    <header class="header text-center text-white"
-        style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
-        <div class="container">
 
             <div class="row">
-                <div class="col-md-8 mx-auto">
+                @foreach ($posts as $post)
+                    <div class="col-lg-6">
+                        <article class="hentry post post-standard has-post-thumbnail sticky">
 
-                    <h1>Latest Blog Posts</h1>
-                    <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
+                            <div class="post-thumb">
+                                <img src="{{ asset($post->featured) }}" alt="{{ $post->title }} image">
+                                <div class="overlay"></div>
+                                <a href="{{ asset($post->featured) }}" class="link-image js-zoom-image">
+                                    <i class="seoicon-zoom"></i>
+                                </a>
+                                <a href="#" class="link-post">
+                                    <i class="seoicon-link-bold"></i>
+                                </a>
+                            </div>
 
-                </div>
+                            <div class="post__content">
+
+                                <div class="post__content-info">
+
+                                    <h2 class="post__title entry-title ">
+                                        <a href="15_blog_details.html">{{ $post->title }}</a>
+                                    </h2>
+
+                                    <div class="post-additional-info">
+
+                                        <span class="post__date">
+
+                                            <i class="seoicon-clock"></i>
+
+                                            <time class="published">
+                                                {{ $post->created_at->diffForHumans() }}
+                                            </time>
+
+                                        </span>
+
+                                        <span class="category">
+                                            <i class="seoicon-tags"></i>
+                                            @foreach ($post->tags as $tag)
+                                                <a href="#">#{{ $tag->tag }}</a>&nbsp;
+                                            @endforeach
+                                        </span>
+
+                                        <span class="post__comments">
+                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                            6
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                @endforeach
             </div>
-
         </div>
-    </header><!-- /.header -->
 
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <section class="section p-0">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-8 col-xl-6 mx-auto">
-
-                        <article class="my-8">
-                            <header class="text-center mb-7">
-                                <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600" href="#">News</a>
-                                </p>
-                                <h3><a href="post-2.html">We relocated our office to a new garage</a></h3>
-                            </header>
-
-                            <a href="post-2.html"><img class="rounded-md" src="../assets/img/thumb/1.jpg"
-                                    alt="..."></a>
-
-                            <div class="card-body">
-                                <div class="row mb-5 small-2 text-lighter">
-                                    <div class="col-auto">
-                                        <a class="text-inherit" href="#">by Hossein</a>
-                                        <span class="align-middle px-1">&bull;</span>
-                                        <time datetime="2018-05-15T19:00">3 days ago</time>
-                                    </div>
-
-                                    <div class="col-auto ml-auto">
-                                        <span><i class="fa fa-eye pr-1 opacity-60"></i> 28</span>
-                                        <a class="text-inherit ml-5" href="#"><i
-                                                class="fa fa-comments pr-1 opacity-60"></i> 6</a>
+        <div class="container-fluid">
+            <div class="row medium-padding120 bg-border-color">
+                <div class="container">
+                    <div class="col-lg-12">
+                        @foreach ($categories as $category)
+                            <div class="offers">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="heading">
+                                            <h4 class="h1 heading-title">{{ $category->name }}</h4>
+                                            <div class="heading-line">
+                                                <span class="short-line"></span>
+                                                <span class="long-line"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <p class="text-justify">Together. Great. So good was saying, that can't first let
-                                    called air divide stars male isn't i. Herb third let may fourth divide. Greater
-                                    gathering land you'll i their beast have. She'd form sea it wherein fowl, spirit
-                                    creeping living. Likeness creepeth you hath heaven. Likeness, moveth fruitful
-                                    behold. Open evening a air us behold. Saying above moving second a subdue likeness
-                                    after also second.</p>
-
-                                <p class="text-center mt-7">
-                                    <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
-                                </p>
-                            </div>
-                        </article>
-
-
-                        <hr>
-
-
-                        <article class="my-8">
-                            <header class="text-center mb-7">
-                                <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600"
-                                        href="#">Marketing</a></p>
-                                <h3><a href="post-2.html">Top 5 brilliant content marketing strategies</a></h3>
-                            </header>
-
-                            <a href="post-2.html"><img class="rounded-md" src="../assets/img/thumb/2.jpg"
-                                    alt="..."></a>
-
-                            <div class="card-body">
-                                <div class="row mb-5 small-2 text-lighter">
-                                    <div class="col-auto">
-                                        <a class="text-inherit" href="#">by Maryam</a>
-                                        <span class="align-middle px-1">&bull;</span>
-                                        <time datetime="2018-05-15T19:00">6 days ago</time>
-                                    </div>
-
-                                    <div class="col-auto ml-auto">
-                                        <span><i class="fa fa-eye pr-1 opacity-60"></i> 964</span>
-                                        <a class="text-inherit ml-5" href="#"><i
-                                                class="fa fa-comments pr-1 opacity-60"></i> 3</a>
+                                <div class="row">
+                                    <div class="case-item-wrap">
+                                        @foreach ($category->posts as $post)
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                <div class="case-item">
+                                                    <div class="case-item__thumb">
+                                                        <img src="{{ asset($post->featured) }}"
+                                                            alt="{{ $post->title }} image">
+                                                    </div>
+                                                    <h6 class="case-item__title"><a
+                                                            href="#">{{ $post->title }}</a></h6>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
-
-                                <p class="text-justify">Together. Great. So good was saying, that can't first let
-                                    called air divide stars male isn't i. Herb third let may fourth divide. Greater
-                                    gathering land you'll i their beast have. She'd form sea it wherein fowl, spirit
-                                    creeping living. Likeness creepeth you hath heaven. Likeness, moveth fruitful
-                                    behold. Open evening a air us behold. Saying above moving second a subdue likeness
-                                    after also second.</p>
-
-                                <p class="text-center mt-7">
-                                    <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
-                                </p>
                             </div>
-                        </article>
-
-
-                        <hr>
-
-
-                        <article class="my-8">
-                            <header class="text-center mb-7">
-                                <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600"
-                                        href="#">Design</a></p>
-                                <h3><a href="post-2.html">Best practices for minimalist design</a></h3>
-                            </header>
-
-                            <a href="post-2.html"><img class="rounded-md" src="../assets/img/thumb/3.jpg"
-                                    alt="..."></a>
-
-                            <div class="card-body">
-                                <div class="row mb-5 small-2 text-lighter">
-                                    <div class="col-auto">
-                                        <a class="text-inherit" href="#">by Hossein</a>
-                                        <span class="align-middle px-1">&bull;</span>
-                                        <time datetime="2018-05-15T19:00">2 weeks ago</time>
-                                    </div>
-
-                                    <div class="col-auto ml-auto">
-                                        <span><i class="fa fa-eye pr-1 opacity-60"></i> 2,571</span>
-                                        <a class="text-inherit ml-5" href="#"><i
-                                                class="fa fa-comments pr-1 opacity-60"></i> 9</a>
-                                    </div>
-                                </div>
-
-                                <p class="text-justify">Together. Great. So good was saying, that can't first let
-                                    called air divide stars male isn't i. Herb third let may fourth divide. Greater
-                                    gathering land you'll i their beast have. She'd form sea it wherein fowl, spirit
-                                    creeping living. Likeness creepeth you hath heaven. Likeness, moveth fruitful
-                                    behold. Open evening a air us behold. Saying above moving second a subdue likeness
-                                    after also second.</p>
-
-                                <p class="text-center mt-7">
-                                    <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
-                                </p>
-                            </div>
-                        </article>
-
-
-                        <hr>
-
-
-                        <article class="my-8">
-                            <header class="text-center mb-7">
-                                <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600"
-                                        href="#">Hiring</a></p>
-                                <h3><a href="post-2.html">Congratulate and thank to Maryam for joining our team</a>
-                                </h3>
-                            </header>
-
-                            <a href="post-2.html"><img class="rounded-md" src="../assets/img/thumb/4.jpg"
-                                    alt="..."></a>
-
-                            <div class="card-body">
-                                <div class="row mb-5 small-2 text-lighter">
-                                    <div class="col-auto">
-                                        <a class="text-inherit" href="#">by Hossein</a>
-                                        <span class="align-middle px-1">&bull;</span>
-                                        <time datetime="2018-05-15T19:00">2 months ago</time>
-                                    </div>
-
-                                    <div class="col-auto ml-auto">
-                                        <span><i class="fa fa-eye pr-1 opacity-60"></i> 1,928</span>
-                                        <a class="text-inherit ml-5" href="#"><i
-                                                class="fa fa-comments pr-1 opacity-60"></i> 4</a>
-                                    </div>
-                                </div>
-
-                                <p class="text-justify">Together. Great. So good was saying, that can't first let
-                                    called air divide stars male isn't i. Herb third let may fourth divide. Greater
-                                    gathering land you'll i their beast have. She'd form sea it wherein fowl, spirit
-                                    creeping living. Likeness creepeth you hath heaven. Likeness, moveth fruitful
-                                    behold. Open evening a air us behold. Saying above moving second a subdue likeness
-                                    after also second.</p>
-
-                                <p class="text-center mt-7">
-                                    <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
-                                </p>
-                            </div>
-                        </article>
-
-
-                        <hr>
-
-
-                        <article class="my-8">
-                            <header class="text-center mb-7">
-                                <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600"
-                                        href="#">Product</a></p>
-                                <h3><a href="post-2.html">New published books to read by a product designer</a></h3>
-                            </header>
-
-                            <a href="post-2.html"><img class="rounded-md" src="../assets/img/thumb/5.jpg"
-                                    alt="..."></a>
-
-                            <div class="card-body">
-                                <div class="row mb-5 small-2 text-lighter">
-                                    <div class="col-auto">
-                                        <a class="text-inherit" href="#">by Hossein</a>
-                                        <span class="align-middle px-1">&bull;</span>
-                                        <time datetime="2018-05-15T19:00">February 19, 2019</time>
-                                    </div>
-
-                                    <div class="col-auto ml-auto">
-                                        <span><i class="fa fa-eye pr-1 opacity-60"></i> 3,597</span>
-                                        <a class="text-inherit ml-5" href="#"><i
-                                                class="fa fa-comments pr-1 opacity-60"></i> 16</a>
-                                    </div>
-                                </div>
-
-                                <p class="text-justify">Together. Great. So good was saying, that can't first let
-                                    called air divide stars male isn't i. Herb third let may fourth divide. Greater
-                                    gathering land you'll i their beast have. She'd form sea it wherein fowl, spirit
-                                    creeping living. Likeness creepeth you hath heaven. Likeness, moveth fruitful
-                                    behold. Open evening a air us behold. Saying above moving second a subdue likeness
-                                    after also second.</p>
-
-                                <p class="text-center mt-7">
-                                    <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
-                                </p>
-                            </div>
-                        </article>
-
-
-                        <nav class="flexbox my-8">
-                            <a class="btn btn-outline-secondary disabled"><i class="ti-arrow-left fs-9 mr-2"></i>
-                                Newer</a>
-                            <a class="btn btn-outline-secondary" href="#">Older <i
-                                    class="ti-arrow-right fs-9 ml-2"></i></a>
-                        </nav>
+                            <div class="padded-50"></div>
+                        @endforeach
                     </div>
                 </div>
-
             </div>
-        </section>
-    </main>
+        </div>
 
+        <!-- Subscribe Form -->
+
+        <div class="container-fluid bg-green-color">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="subscribe scrollme">
+                            <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
+                                <h4 class="subscribe-title">Email Newsletters!</h4>
+                                <form class="subscribe-form" method="post" action="">
+                                    <input class="email input-standard-grey input-white" name="email"
+                                        required="required" placeholder="Your Email Address" type="email">
+                                    <button class="subscr-btn">subscribe
+                                        <span class="semicircle--right"></span>
+                                    </button>
+                                </form>
+                                <div class="sub-title">Sign up for new {{ $settings->site_name }} content, updates,
+                                    surveys & offers.
+                                </div>
+
+                            </div>
+
+                            <div class="images-block">
+                                <img src="{{ asset('img/subscr-gear.png') }}" alt="gear" class="gear">
+                                <img src="{{ asset('img/subscr1.png') }}" alt="mail" class="mail">
+                                <img src="{{ asset('img/subscr-mailopen.png') }}" alt="mail" class="mail-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Subscribe Form -->
+    </div>
 
 
 
     <!-- Footer -->
-    <footer class="footer">
+    @include('includes.footer')
+
+    <!-- End Footer -->
+
+    <svg style="display:none;">
+        <symbol id="arrow-left" viewBox="122.9 388.2 184.3 85">
+            <path
+                d="M124.1,431.3c0.1,2,1,3.8,2.4,5.2c0,0,0.1,0.1,0.1,0.1l34.1,34.1c1.6,1.6,3.7,2.5,5.9,2.5s4.3-0.9,5.9-2.4
+		c1.6-1.6,2.4-3.7,2.4-5.9s-0.9-3.9-2.4-5.5l-19.9-19.5h11.1c1.5,0,2.7-1.5,2.7-3c0-1.5-1.2-3-2.7-3h-17.6c-1.1,0-2.1,0.6-2.5,1.6
+		c-0.4,1-0.2,2.1,0.6,2.9l24.4,24.4c0.6,0.6,0.9,1.3,0.9,2.1s-0.3,1.6-0.9,2.1c-0.6,0.6-1.3,0.9-2.1,0.9s-1.6-0.3-2.1-0.9
+		l-34.2-34.2c0,0,0,0,0,0c-0.6-0.6-0.8-1.4-0.9-1.9c0,0,0,0,0,0c0-0.2,0-0.4,0-0.6c0.1-0.6,0.3-1.1,0.7-1.6c0-0.1,0.1-0.1,0.2-0.2
+		l34.1-34.1c0.6-0.6,1.3-0.9,2.1-0.9s1.6,0.3,2.1,0.9c0.6,0.6,0.9,1.3,0.9,2.1s-0.3,1.6-0.9,2.1l-24.4,24.4c-0.8,0.8-1,2-0.6,3
+		c0.4,1,1.4,1.7,2.5,1.7h125.7c1.5,0,2.7-1,2.7-2.5c0-1.5-1.2-2.5-2.7-2.5H152.6l19.9-20.1c1.6-1.6,2.4-3.8,2.4-6s-0.9-4.4-2.4-6
+		c-1.6-1.6-3.7-2.5-5.9-2.5s-4.3,0.9-5.9,2.4l-34.1,34.1c-0.2,0.2-0.3,0.3-0.5,0.5c-1.1,1.2-1.8,2.8-2,4.4
+		C124.1,430.2,124.1,430.8,124.1,431.3C124.1,431.3,124.1,431.3,124.1,431.3z">
+            </path>
+            <path
+                d="M283.3,427.9h14.2c1.7,0,3,1.3,3,3c0,1.7-1.4,3-3,3H175.1c-1.5,0-2.7,1.5-2.7,3c0,1.5,1.2,3,2.7,3h122.4
+		c4.6,0,8.4-3.9,8.4-8.5c0-4.6-3.8-8.5-8.4-8.5h-14.2c-1.5,0-2.7,1-2.7,2.5C280.7,426.9,281.8,427.9,283.3,427.9z">
+            </path>
+        </symbol>
+        <symbol id="arrow-right" viewBox="122.9 388.2 184.3 85">
+            <path
+                d="M305.9,430.2c-0.1-2-1-3.8-2.4-5.2c0,0-0.1-0.1-0.1-0.1l-34.1-34.1c-1.6-1.6-3.7-2.5-5.9-2.5c-2.2,0-4.3,0.9-5.9,2.4
+		c-1.6,1.6-2.4,3.7-2.4,5.9s0.9,4.1,2.4,5.7l19.9,19.6h-11.1c-1.5,0-2.7,1.5-2.7,3c0,1.5,1.2,3,2.7,3h17.6c1.1,0,2.1-0.7,2.5-1.7
+		c0.4-1,0.2-2.2-0.6-2.9l-24.4-24.5c-0.6-0.6-0.9-1.3-0.9-2.1s0.3-1.6,0.9-2.1c0.6-0.6,1.3-0.9,2.1-0.9c0.8,0,1.6,0.3,2.1,0.9
+		l34.2,34.2c0,0,0,0,0,0c0.6,0.6,0.8,1.4,0.9,1.9c0,0,0,0,0,0c0,0.2,0,0.4,0,0.6c-0.1,0.6-0.3,1.1-0.7,1.6c0,0.1-0.1,0.1-0.2,0.2
+		l-34.1,34.1c-0.6,0.6-1.3,0.9-2.1,0.9s-1.6-0.3-2.1-0.9c-0.6-0.6-0.9-1.3-0.9-2.1s0.3-1.6,0.9-2.1l24.4-24.4c0.8-0.8,1-1.9,0.6-2.9
+		c-0.4-1-1.4-1.6-2.5-1.6H158.1c-1.5,0-2.7,1-2.7,2.5c0,1.5,1.2,2.5,2.7,2.5h119.3l-19.9,20c-1.6,1.6-2.4,3.7-2.4,6s0.9,4.4,2.4,5.9
+		c1.6,1.6,3.7,2.5,5.9,2.5s4.3-0.9,5.9-2.4l34.1-34.1c0.2-0.2,0.3-0.3,0.5-0.5c1.1-1.2,1.8-2.8,2-4.4
+		C305.9,431.3,305.9,430.8,305.9,430.2C305.9,430.2,305.9,430.2,305.9,430.2z">
+            </path>
+            <path
+                d="M146.7,433.9h-14.2c-1.7,0-3-1.3-3-3c0-1.7,1.4-3,3-3h122.4c1.5,0,2.7-1.5,2.7-3c0-1.5-1.2-3-2.7-3H132.4
+		c-4.6,0-8.4,3.9-8.4,8.5c0,4.6,3.8,8.5,8.4,8.5h14.2c1.5,0,2.7-1,2.7-2.5C149.3,434.9,148.1,433.9,146.7,433.9z">
+            </path>
+        </symbol>
+        <symbol id="to-top" viewBox="0 0 32 32">
+            <path
+                d="M17,22 L25.0005601,22 C27.7616745,22 30,19.7558048 30,17 C30,14.9035809 28.7132907,13.1085075 26.8828633,12.3655101
+         L26.8828633,12.3655101 C26.3600217,9.87224935 24.1486546,8 21.5,8 C20.6371017,8 19.8206159,8.19871575 19.0938083,8.55288165
+         C17.8911816,6.43144875 15.6127573,5 13,5 C9.13400656,5 6,8.13400656 6,12 C6,12.1381509 6.00400207,12.275367 6.01189661,12.4115388
+          L6.01189661,12.4115388 C4.23965876,13.1816085 3,14.9491311 3,17 C3,19.7614237 5.23249418,22 7.99943992,22 L16,22 L16,16 L12.75,19.25
+           L12,18.5 L16.5,14 L21,18.5 L20.25,19.25 L17,16 L17,22 L17,22 Z M16,22 L16,27 L17,27 L17,22 L16,22 L16,22 Z"
+                id="cloud-upload"></path>
+        </symbol>
+
+    </svg>
+
+    <!-- Overlay Search -->
+
+    <div class="overlay_search">
         <div class="container">
-            <div class="row gap-y align-items-center">
-
-                <div class="col-6 col-lg-3">
-                    <a href="../index.html"><img src="../assets/img/logo-dark.png" alt="logo"></a>
+            <div class="row">
+                <div class="form_search-wrap">
+                    <form>
+                        <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
+                        <a href="#" class="overlay_search-close">
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </form>
                 </div>
-
-                <div class="col-6 col-lg-3 text-right order-lg-last">
-                    <div class="social">
-                        <a class="social-facebook" href="https://www.facebook.com/thethemeio"><i
-                                class="fa fa-facebook"></i></a>
-                        <a class="social-twitter" href="https://twitter.com/thethemeio"><i
-                                class="fa fa-twitter"></i></a>
-                        <a class="social-instagram" href="https://www.instagram.com/thethemeio/"><i
-                                class="fa fa-instagram"></i></a>
-                        <a class="social-dribbble" href="https://dribbble.com/thethemeio"><i
-                                class="fa fa-dribbble"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="nav nav-bold nav-uppercase nav-trim justify-content-lg-center">
-                        <a class="nav-link" href="../uikit/index.html">Elements</a>
-                        <a class="nav-link" href="../block/index.html">Blocks</a>
-                        <a class="nav-link" href="../page/about-1.html">About</a>
-                        <a class="nav-link" href="../blog/grid.html">Blog</a>
-                        <a class="nav-link" href="../page/contact-1.html">Contact</a>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </footer><!-- /.footer -->
+    </div>
+
+    <!-- End Overlay Search -->
+
+    <!-- JS Script -->
+
+    <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('js/crum-mega-menu.js') }}"></script>
+    <script src="{{ asset('js/swiper.jquery.min.js') }}"></script>
+    <script src="{{ asset('js/theme-plugins.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/form-actions.js') }}"></script>
+
+    <script src="{{ asset('js/velocity.min.js') }}"></script>
+    <script src="{{ asset('js/ScrollMagic.min.js') }}"></script>
+    <script src="{{ asset('js/animation.velocity.min.js') }}"></script>
 
 
-    <!-- Scripts -->
-    <script src="../assets/js/page.min.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <!-- ...end JS Script -->
 
 </body>
 

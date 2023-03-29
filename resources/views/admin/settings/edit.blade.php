@@ -15,6 +15,10 @@
                             placeholder="Site Name..." value="{{ isset($settings) ? $settings->site_name : '' }}">
                     </div>
                     <div class="mb-3">
+                        <label for="about_us" class="form-label">About Us</label>
+                        <textarea name="about_us" id="about_us" cols="5" rows="5" class="form-control">{{ isset($settings) ? $settings->about_us : '' }}</textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="title" class="form-label">Address</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="Address..."
                             value="{{ isset($settings) ? $settings->address : '' }}">

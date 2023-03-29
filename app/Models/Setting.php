@@ -11,6 +11,7 @@ class Setting extends Model
 
     protected $fillable = [
         'site_name',
+        'about_us',
         'address',
         'contact_number',
         'contact_email'

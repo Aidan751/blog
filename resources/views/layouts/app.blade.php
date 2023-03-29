@@ -78,8 +78,8 @@
         <main class="py-4">
 
             <div class="container">
-                <div class="row">
-                    @auth
+                @auth
+                    <div class="row">
                         <div class="col-lg-3">
                             <ul class="list-group">
                                 <li class="list-group-item bg-dark text-bg-dark">
@@ -171,17 +171,17 @@
                                 @endif
                             </ul>
                         </div>
-                        <div class="col-lg-7">
+                        <div class="col-lg-8">
                             @include('partials.errors')
                             @yield('content')
                         </div>
-                    @else
-                        <div class="col-lg-12">
-                            @include('partials.errors')
-                            @yield('content')
-                        </div>
-                    @endauth
-                </div>
+                    </div>
+                @else
+                    <div class="row">
+                        @include('partials.errors')
+                        @yield('content')
+                    </div>
+                @endauth
             </div>
         </main>
     </div>
