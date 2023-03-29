@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -50,5 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('users/admin/{id}', [UserController::class, 'permissions'])->name('users.permissions');
 
     Route::resource('users', UserController::class);
+
+    Route::resource('profile', ProfileController::class);
 
 });

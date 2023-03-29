@@ -41,7 +41,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -85,18 +84,26 @@
                         <div class="col-lg-3">
                             <ul class="list-group">
                                 <li class="list-group-item bg-dark text-bg-dark">
-                                    {{ __('Users') }}
+                                    {{ __('Profile') }}
                                 </li>
                                 <li class="list-group-item">
-                                    <a class="nav-link" href="{{ route('users.create') }}">
-                                        {{ __('Create User') }}
-                                    </a>
+                                    <a class="nav-link" href="{{ route('profile.index') }}">{{ __('My Profile') }}</a>
                                 </li>
-                                <li class="list-group-item">
-                                    <a class="nav-link" href="{{ route('users.index') }}">
-                                        {{ __('List Users') }}
-                                    </a>
-                                </li>
+                                @if (auth()->user()->is_admin)
+                                    <li class="list-group-item bg-dark text-bg-dark">
+                                        {{ __('Users') }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="nav-link" href="{{ route('users.create') }}">
+                                            {{ __('Create User') }}
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="nav-link" href="{{ route('users.index') }}">
+                                            {{ __('List Users') }}
+                                        </a>
+                                    </li>
+                                @endif
                                 <li class="list-group-item bg-dark text-bg-dark">
                                     {{ __('Posts') }}
                                 </li>
