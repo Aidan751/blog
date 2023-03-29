@@ -109,11 +109,8 @@ class UserController extends Controller
         $user = User::withTrashed()->where('id', $id)->first();
         if ($user->trashed()) {
             $user->forceDelete();
-            // delete profile avatar
-            // change for production
-            // $user->profile->avatar->delete();
-
-            $user->profile()->forceDelete();
+            $user->profile->deleteImage();
+            $user->profile->forceDelete();
 
         } else {
             $user->delete();

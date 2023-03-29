@@ -10,8 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,7 +20,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    @yield('css')
 </head>
 
 <body>
@@ -143,6 +142,16 @@
                                         {{ __('List Tags') }}
                                     </a>
                                 </li>
+                                @if (auth()->user()->is_admin)
+                                    <li class="list-group-item bg-dark text-bg-dark">
+                                        {{ __('Settings') }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="nav-link" href="{{ route('settings.index') }}">
+                                            {{ __('Edit Settings') }}
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                             <ul class="list-group mt-5">
                                 <li class="list-group-item bg-dark text-bg-dark">
@@ -153,14 +162,16 @@
                                         {{ __('Trashed Posts') }}
                                     </a>
                                 </li>
-                                <li class="list-group-item">
-                                    <a class="nav-link" href="{{ route('users.trashed') }}">
-                                        {{ __('Trashed Users') }}
-                                    </a>
-                                </li>
+                                @if (auth()->user()->is_admin)
+                                    <li class="list-group-item">
+                                        <a class="nav-link" href="{{ route('users.trashed') }}">
+                                            {{ __('Trashed Users') }}
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-7">
                             @include('partials.errors')
                             @yield('content')
                         </div>
@@ -174,9 +185,7 @@
             </div>
         </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -193,6 +202,7 @@
         @endif
     </script>
     @yield('scripts')
+
 </body>
 
 </html>

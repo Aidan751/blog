@@ -15,6 +15,11 @@
                             value="{{ isset($user) ? $user->name : '' }}">
                     </div>
                     <div class="mb-3">
+                        <label for="title" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email..."
+                            value="{{ isset($user) ? $user->email : '' }}">
+                    </div>
+                    <div class="mb-3">
                         <label for="title" class="form-label">New Password</label>
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Password...">

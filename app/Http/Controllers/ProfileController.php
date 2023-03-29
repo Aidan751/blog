@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfileRequest;
-use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -14,48 +13,6 @@ class ProfileController extends Controller
     public function index()
     {
         return view('admin.profile.index', ['user' => auth()->user()]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -70,8 +27,14 @@ class ProfileController extends Controller
 
         $user->update([
             'name' => $request->name,
-            'password' => bcrypt($request->password)
+            'email' => $request->email
         ]);
+
+        if ($request->password) {
+            $user->update([
+                'password' => bcrypt($request->password)
+            ]);
+        }
 
         $user->profile->update([
             'about' => $request->about,
@@ -90,15 +53,5 @@ class ProfileController extends Controller
         }
 
         return redirect()->back()->with('success', 'Profile updated successfully');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

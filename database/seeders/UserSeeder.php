@@ -25,8 +25,8 @@ class UserSeeder extends Seeder
         Profile::create([
             'user_id' => 1,
             'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nis',
-            'facebook' => 'facebook.com',
-            'youtube' => 'youtube.com',
+            'facebook' => 'https://facebook.com',
+            'youtube' => 'https://youtube.com',
         ]);
     }
 }

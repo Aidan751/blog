@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="row justify-content-center">
         <div class="card p-0">
@@ -19,7 +20,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="featured" class="form-label">Featured Image</label>
+                        <label for="featured" clazs="form-label">Featured Image</label>
                         <input type="file" class="form-control" id="featured" name="featured">
                         @if (isset($post))
 
@@ -29,11 +30,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="content" class="form-label">Content</label>
-                        <textarea name="content" id="content" cols="5" rows="5" class="form-control"
+                        <label class="form-group mb-2">Content</label>
+                        <input id="content" type="hidden" name="content"
                             value="{{ isset($post) ? $post->content : '' }}">
-{{ isset($post) ? $post->content : '' }}
-                        </textarea>
+                        <trix-editor input="content"></trix-editor>
                     </div>
 
                     <div class="mb-3">
@@ -76,4 +76,15 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.0.0/trix.js"
+        integrity="sha512-DYqCX8kO/IP/uf6iT0+LnI6ft5aDdONwabmbgVxjR94pwCefuJwYwd+NAsKFpH3hk8wP2L3jRn9g61t3r2N9VA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endsection
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.0.0/trix.css"
+        integrity="sha512-An9xk8CstwPHW2Vzjj0RA6Gdbi3RUkEMqocdnEtq2C/iKJLKV0JGaJTMgyn2HeolVe0zDtDhXP7OMaTSffCkqw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
