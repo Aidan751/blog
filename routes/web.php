@@ -22,6 +22,8 @@ use App\Http\Controllers\SettingsController;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 
+Route::get('/post/{slug}', [FrontendController::class, 'singlePost'])->name('post.single');
+
 Auth::routes();
 
 
