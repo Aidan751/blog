@@ -17,10 +17,10 @@ class FrontendController extends Controller
     public function index()
     {
         return view('welcome', [
-            'categories' => Category::all(),
+            'categories' => Category::take(5)->get(),
             'tags' => Tag::all(),
-            'posts' => Post::all(),
-            'top_post' => Post::first(),
+            'posts' => Post::orderBy('created_at', 'desc')->skip(1)->take(3)->get(),
+            'top_post' => Post::latest()->first(),
             'settings' => Setting::first()
         ]);
     }

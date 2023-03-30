@@ -72,7 +72,7 @@
 
                             <div class="post__content-info">
 
-                                <h2 class="post__title entry-title ">
+                                <h2 class="post__title entry-title text-center">
                                     <a href="15_blog_details.html">{{ $top_post->title }}</a>
                                 </h2>
 
@@ -83,16 +83,16 @@
                                         <i class="seoicon-clock"></i>
 
                                         <time class="published">
-                                            {{ $top_post->created_at->diffForHumans() }}
+                                            {{ $top_post->created_at->toFormattedDateString() }}
                                         </time>
 
                                     </span>
 
                                     <span class="category">
                                         <i class="seoicon-tags"></i>
-                                        @foreach ($top_post->tags as $tag)
-                                            <a href="#">#{{ $tag->tag }}</a>&nbsp;
-                                        @endforeach
+
+                                        <a href="#">#{{ $top_post->category->name }}</a>
+
                                     </span>
 
                                     <span class="post__comments">
@@ -129,7 +129,7 @@
 
                                 <div class="post__content-info">
 
-                                    <h2 class="post__title entry-title ">
+                                    <h2 class="post__title entry-title text-center">
                                         <a href="15_blog_details.html">{{ $post->title }}</a>
                                     </h2>
 
@@ -140,16 +140,14 @@
                                             <i class="seoicon-clock"></i>
 
                                             <time class="published">
-                                                {{ $post->created_at->diffForHumans() }}
+                                                {{ $post->created_at->toFormattedDateString() }}
                                             </time>
 
                                         </span>
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            @foreach ($post->tags as $tag)
-                                                <a href="#">#{{ $tag->tag }}</a>&nbsp;
-                                            @endforeach
+                                            <a href="#">#{{ $post->category->name }}</a>
                                         </span>
 
                                         <span class="post__comments">
@@ -187,14 +185,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="case-item-wrap">
-                                        @foreach ($category->posts as $post)
+                                        @foreach ($category->posts()->latest()->take(3)->get() as $post)
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <div class="case-item">
                                                     <div class="case-item__thumb">
                                                         <img src="{{ asset($post->featured) }}"
                                                             alt="{{ $post->title }} image">
                                                     </div>
-                                                    <h6 class="case-item__title"><a
+                                                    <h6 class="case-item__title text-center"><a
                                                             href="#">{{ $post->title }}</a></h6>
                                                 </div>
                                             </div>
