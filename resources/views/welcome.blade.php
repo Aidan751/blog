@@ -43,7 +43,8 @@
                                     <span class="category">
                                         <i class="seoicon-tags"></i>
 
-                                        <a href="#">#{{ $top_post->category->name }}</a>
+                                        <a
+                                            href="{{ route('category.single', $top_post->category->id) }}">#{{ $top_post->category->name }}</a>
 
                                     </span>
 
@@ -100,7 +101,8 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">#{{ $post->category->name }}</a>
+                                            <a
+                                                href="{{ route('category.single', $post->category->id) }}">#{{ $post->category->name }}</a>
                                         </span>
 
                                         <span class="post__comments">

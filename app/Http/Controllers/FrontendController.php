@@ -47,4 +47,14 @@ class FrontendController extends Controller
             'next' => Post::find($next_id),
         ]);
     }
+
+    public function category(Category $category)
+    {
+        return view('single-category', [
+            'category' => $category,
+            'settings' => Setting::first(),
+            'categories' => Category::take(5)->get(),
+            'tags' => Tag::all(),
+        ]);
+    }
 }
