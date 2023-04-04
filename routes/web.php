@@ -1,5 +1,10 @@
 <?php
 
+
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Setting;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
@@ -24,6 +29,19 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 Route::get('/post/{slug}', [FrontendController::class, 'singlePost'])->name('post.single');
 Route::get('/category/{category}', [FrontendController::class, 'category'])->name('category.single');
+Route::get('/tag/{tag}', [FrontendController::class, 'tag'])->name('tag.single');
+Route::get('/results', function () {
+    $posts = Post::where('title', 'like', '%' . request('query') . '%')->get();
+
+    return view('results', [
+        'categories' => Category::take(5)->get(),
+        'tags' => Tag::all(),
+        'posts' => $posts,
+        'title' => 'Search results: ' . request('query'),
+        'settings' => Setting::first()
+    ]);
+});
+
 
 Auth::routes();
 

@@ -41,6 +41,7 @@ class FrontendController extends Controller
 
         return view('single-post', [
             'post' => $post,
+            'tags' => Tag::all(),
             'settings' => Setting::first(),
             'categories' => Category::take(5)->get(),
             'prev' => Post::find($prev_id),
@@ -52,6 +53,16 @@ class FrontendController extends Controller
     {
         return view('single-category', [
             'category' => $category,
+            'settings' => Setting::first(),
+            'categories' => Category::take(5)->get(),
+            'tags' => Tag::all(),
+        ]);
+    }
+
+    public function tag(Tag $tag)
+    {
+        return view('single-tag', [
+            'tag' => $tag,
             'settings' => Setting::first(),
             'categories' => Category::take(5)->get(),
             'tags' => Tag::all(),
