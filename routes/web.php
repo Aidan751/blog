@@ -5,6 +5,8 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Mail\NewsLetterMail;
+use App\Http\Requests\SubscribeUser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\NewsLetterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +44,16 @@ Route::get('/results', function () {
         'settings' => Setting::first()
     ]);
 });
+
+Route::get(
+    '/subscribe',
+    function (SubscribeUser $request) {
+        $email = $request->email;
+
+        NewsLetterMail::subscribe($email);
+        return redirect()->back()->with('success', 'Subscribed successfully');
+    }
+);
 
 
 Auth::routes();
@@ -76,4 +89,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('profile', ProfileController::class);
 
     Route::resource('settings', SettingsController::class);
+    Route::resource('newsletters', NewsLetterController::class);
+
+
 });

@@ -85,50 +85,10 @@
 
                                 <h4 class="mb30">Categories</h4>
 
-                                {{-- <p class="post__text">Iriure dolor in hendrerit in vulputate velit esse molestie
-                                    consequat,
-                                    vel illum dolore eu feugiat <span class="c-dark">nulla facilisis at vero
-                                        eros</span>
-                                    et accumsan et iusto odio dignissim qui blandit praesent luptatum quam nunc
-                                    putamus parum claram.
-                                </p> --}}
-                                {{--
-                                <ul class="list list--secondary">
-                                    <li>
-                                        <i class="seoicon-check"></i>
-                                        <a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                            sed diam
-                                            nonummy nibh <span class="c-primary">euismod tincidunt;</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <i class="seoicon-check"></i>
-                                        <a href="#">Mirum est notare quam littera gothica;</a>
-                                    </li>
-                                    <li>
-                                        <i class="seoicon-check"></i>
-                                        <a href="#">Duis autem vel eum iriure dolor in hendrerit in vulputate
-                                            velit esse
-                                            molestie consequat, vel illum dolore eu feugiat nulla;
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <i class="seoicon-check"></i>
-                                        <a href="#">Investigationes demonstraverunt lectores.</a>
-                                    </li>
-                                </ul>
-
-                                <p class="post__text">Quis autem vel eum iriure dolor in hendrerit in vulputate
-                                    velit esse
-                                    molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
-                                    accumsan
-                                    et iusto odio dignissim qui blandit praesent quam nunc putamus parum claram.
-                                </p> --}}
-
                                 <div class="widget w-tags">
                                     <div class="tags-wrap">
                                         @foreach ($post->tags as $tag)
-                                            <a href="#" class="w-tags-item">{{ $tag->tag }}</a>
+                                            <a href="{{  route('tag.single', $tag->id) }}" class="w-tags-item">{{ $tag->tag }}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -136,23 +96,8 @@
                             </div>
                         </div>
 
-                        <div class="socials">Share:
-                            <a href="#" class="social__item">
-                                <i class="seoicon-social-facebook"></i>
-                            </a>
-                            <a href="#" class="social__item">
-                                <i class="seoicon-social-twitter"></i>
-                            </a>
-                            <a href="#" class="social__item">
-                                <i class="seoicon-social-linkedin"></i>
-                            </a>
-                            <a href="#" class="social__item">
-                                <i class="seoicon-social-google-plus"></i>
-                            </a>
-                            <a href="#" class="social__item">
-                                <i class="seoicon-social-pinterest"></i>
-                            </a>
-                        </div>
+                        <!-- ShareThis BEGIN -->
+                        <div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
 
                     </article>
 
@@ -166,25 +111,15 @@
                         <div class="blog-details-author-content">
                             <div class="author-info">
                                 <h5 class="author-name">{{ $post->user->name }}</h5>
-                                {{-- <p class="author-info">{{ $post->user->about_me }}</p> --}}
+                                <p class="text">{{ $post->user->profile->about }}</p>
                             </div>
-                            <p class="text">{{ $post->user->about_me }}
-                            </p>
                             <div class="socials">
 
-                                <a href="#" class="social__item">
+                                <a href="{{ $post->user->profile->facebook }}" class="social__item" target="_blank">
                                     <img src="{{ asset('svg/circle-facebook.svg') }}" alt="facebook">
                                 </a>
 
-                                <a href="#" class="social__item">
-                                    <img src="{{ asset('svg/twitter.svg') }}" alt="twitter">
-                                </a>
-
-                                <a href="#" class="social__item">
-                                    <img src="{{ asset('svg/google.svg') }}" alt="google">
-                                </a>
-
-                                <a href="#" class="social__item">
+                                <a href="{{ $post->user->profile->youtube }}" class="social__item" target="_blank">
                                     <img src="{{ asset('svg/youtube.svg') }}" alt="youtube">
                                 </a>
 

@@ -7,7 +7,7 @@
                 <div class="subscribe scrollme">
                     <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
                         <h4 class="subscribe-title">Email Newsletters!</h4>
-                        <form class="subscribe-form" method="post" action="">
+                        <form class="subscribe-form" method="get" action="/subscribe">
                             <input class="email input-standard-grey input-white" name="email" required="required"
                                 placeholder="Your Email Address" type="email">
                             <button class="subscr-btn">subscribe
@@ -243,7 +243,22 @@
 <script src="{{ asset('js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('js/animation.velocity.min.js') }}"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript">
+    @if (session('success'))
+        toastr.success('{{ session('success') }}')
+    @endif
+    @if (session('info'))
+        toastr.info('{{ session('info') }}')
+    @endif
+    @if (session('error'))
+        toastr.error('{{ session('error') }}')
+    @endif
+</script>
+@yield('scripts')
 <!-- ...end JS Script -->
 
 </body>

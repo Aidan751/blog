@@ -151,6 +151,14 @@
                                             {{ __('Edit Settings') }}
                                         </a>
                                     </li>
+                                    <li class="list-group-item bg-dark text-bg-dark">
+                                        {{ __('NewsLetter') }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="nav-link" href="{{ route('newsletters.create') }}">
+                                            {{ __('Create News Letter') }}
+                                        </a>
+                                    </li>
                                 @endif
                             </ul>
                             <ul class="list-group mt-5">
