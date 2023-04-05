@@ -83,7 +83,7 @@
                             <a href="#" class="title">
                                 {{ $settings->contact_number }}
                             </a>
-                            <p class="sub-title">Mon-Fri 9am-6pm</p>
+                            <p class="sub-title">{{ $settings->contact_description }}</p>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="content">
                             <a href="#" class="title">{{ $settings->contact_email }}</a>
-                            <p class="sub-title">online support</p>
+                            <p class="sub-title">{{ $settings->email_description }}</p>
                         </div>
                     </div>
                 </div>
@@ -150,8 +150,8 @@
                             </svg>
                         </div>
                         <div class="content">
-                            <a href="#" class="title">Glasgow, Scotland</a>
-                            <p class="sub-title">{{ $settings->address }}</p>
+                            <a href="#" class="title">{{ $settings->city }}, {{ $settings->country }}</a>
+                            <p class="sub-title">{{ $settings->address_line_1 }}</p>
                         </div>
                     </div>
                 </div>

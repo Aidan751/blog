@@ -25,9 +25,17 @@ class UpdateSettingsRequest extends FormRequest
     {
         return [
             'site_name' => 'required|max:255',
-            'contact_email' => 'required|email',
-            'contact_number' => 'required',
-            'address' => 'required'
+            'about_us' => 'required',
+            'address_line_1' => 'required|max:255',
+            'address_line_2' => 'nullable|max:255',
+            'city' => 'required|max:255',
+            'state' => 'nullable|max:255',
+            'country' => 'required|max:255',
+            'zip_code' => 'nullable|max:255',
+            'contact_number' => 'required|max:255',
+            'contact_description' => 'required|max:255',
+            'contact_email' => 'required|max:255',
+            'email_description' => 'required|max:255',
         ];
     }
 }

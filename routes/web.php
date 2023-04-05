@@ -58,7 +58,7 @@ Auth::routes();
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('posts/trashed', [PostController::class, 'trashed'])->name('posts.trashed');
     Route::delete('posts/kill/{id}', [PostController::class, 'kill'])->name('posts.kill');

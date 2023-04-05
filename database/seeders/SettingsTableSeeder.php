@@ -17,9 +17,16 @@ class SettingsTableSeeder extends Seeder
         Setting::create([
             'site_name' => 'Laravel Blog',
             'about_us' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nis',
-            'address' => '123 Main St',
-            'contact_number' => '555-555-5555',
-            'contact_email' => 'test@gmail.com'
+            'address_line_1' => '1234 Main St',
+            'address_line_2' => 'Apartment 1',
+            'city' => 'New York',
+            'state' => 'NY',
+            'country' => 'USA',
+            'zip_code' => '10001',
+            'contact_number' => '123-456-7890',
+            'contact_description' => 'Call us',
+            'contact_email' => 'test@gmail.com',
+            'email_description' => 'Email us',
         ]);
     }
 }

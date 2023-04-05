@@ -17,9 +17,16 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->string('site_name');
             $table->text('about_us');
-            $table->string('address');
+            $table->string('address_line_1');
+            $table->string('address_line_2')->nullable();
+            $table->string('city');
+            $table->string('state')->nullable();
+            $table->string('country');
+            $table->string('zip_code')->nullable();
             $table->string('contact_number');
+            $table->string('contact_description');
             $table->string('contact_email');
+            $table->string('email_description');
             $table->timestamps();
         });
     }

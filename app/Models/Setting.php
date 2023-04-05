@@ -12,8 +12,15 @@ class Setting extends Model
     protected $fillable = [
         'site_name',
         'about_us',
-        'address',
+        'address_line_1',
+        'address_line_2',
+        'city',
+        'state',
+        'country',
+        'zip_code',
         'contact_number',
-        'contact_email'
+        'contact_description',
+        'contact_email',
+        'email_description',
     ];
 }
