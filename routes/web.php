@@ -1,9 +1,12 @@
 <?php
 
 
+use App\Http\Controllers\SubscriptionController;
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Setting;
+use App\Mail\Subscribed;
 use App\Models\Category;
 use App\Mail\NewsLetterMail;
 use App\Http\Requests\SubscribeUser;
@@ -47,12 +50,7 @@ Route::get('/results', function () {
 
 Route::get(
     '/subscribe',
-    function (SubscribeUser $request) {
-        $email = $request->email;
-
-        NewsLetterMail::subscribe($email);
-        return redirect()->back()->with('success', 'Subscribed successfully');
-    }
+    [SubscriptionController::class, 'subscribe']
 );
 
 

@@ -139,28 +139,7 @@
 
     <!-- HEADER -->
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr>
-            <td bgcolor="#000000" align="center">
-                <!--[if (gte mso 9)|(IE)]>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
-                        <tr>
-                            <td align="center" valign="top" width="500">
-                    <![endif]-->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;"
-                    class="wrapper">
-                    <tr>
-                        <td align="left" valign="top" style="padding: 2px 0;">
-                            &nbsp;
-                        </td>
-                    </tr>
-                </table>
-                <!--[if (gte mso 9)|(IE)]>
-                    </td>
-                    </tr>
-                    </table>
-                    <![endif]-->
-            </td>
-        </tr>
+
         <tr bgcolor="#ffffff">
             <td align="center">
                 <!--[if (gte mso 9)|(IE)]>
